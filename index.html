@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="ru" ng-app="taxiApp">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Drift</title>
+	<meta name="viewport" content="width=device-width">
+	<link media="screen and (min-width: 700px)" href="css/desktop.css" rel="stylesheet" />
+	<link media="(max-width: 699px)" href="css/mobile.css" rel="stylesheet" />
+</head> 
+<body ng-controller="mainController as main">
+<span class="mobileVersion">Мобильная версия сайта</span>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/main.js"> </script>
+<header class="header">
+	<a href ng-click="main.setTab(8);"><h1>Drift Taxi</h1></a>
+	<nav class="mainMenu">
+		<ul>
+			<li ng-class="{ active:main.isSet(1) }">
+				<a href ng-click="main.setTab(1);">Оформить заказ</a></li>
+			<li ng-class="{ active:main.isSet(2) }">
+				<a href ng-click="main.setTab(2);">Автомобили</a></li>
+			<li ng-class="{ active:main.isSet(3) }">
+				<a href onclick="window.open('https://vk.com/albums-54995159')">Фото</a></li>
+			<li ng-class="{ active:main.isSet(4) }">
+				<a href onclick="window.open('https://vk.com/videos-54995159')">Видео</a></li>
+		</ul>
+	</nav>
+</header>
+<div class="container"></div>
+	<main class="mainDiv" ng-init="tab = 8;groups = ''">
+		<ng-include src="main.html(main.tab)"></ng-include>
+		<section class="content" ng-show="main.isSet(1);"><h2>Оформление заказа:</h2>
+
+<ul class="statesOrder">
+	<li id="state1" ng-click="main.setState(1);" class="stateGood" ng-class="{ stateActive:main.isState(1) }">
+		<span>Информация</span>
+	</li>
+	<li id="state2" ng-click="main.setState(2);" ng-class="{ stateActive:main.isState(2) }">
+		<span>Соглашение</span>
+	</li>
+	<li id="state3" ng-click="main.setState(3);" ng-class="{ stateActive:main.isState(3) }">
+		<span>Выбор авто</span>
+	</li>
+	<li id="state4" ng-click="main.setState(4);" ng-class="{ stateActive:main.isState(4) }">
+		<span>Завершение</span>
+	</li>
+</ul>
+<div ng-show="main.isState(1)">
+	<p>Сумасшедший и абсолютно реальный аттракцион для настоящих смельчаков. Это возможность почувствовать себя «вторым пилотом» во время экстремального катания профессионального гонщика. 
+	Вы можете выбрать автомобиль, который Вам по душе и испытать все прелести дрифтинга. Также есть возможность подарить сертификат друзьям и близким людям.</p>
+
+	<p>Чтобы купить сертификат ознакомтесь с информацией на сайте и что очень важно <b>ВНИМАТЕЛЬНО</b> прочитайте соглашения и если Вас все устраивает - переходите к следующему шагу.</p>
+	<button ng-click="main.setState(2);">Продолжить</button>
+</div>
+
+<div ng-show="main.isState(2)">
+
+	<p>- В нашем сообществе ЗАПРЕЩЕНО:</p>
+
+	<p>1) Оскорбление участников группы.</p>
+
+	<p>2) Размещение рекламы без ведома организаторов
+	для этого есть ссылка "куплю продам" https://vk.com/topic-54995159_29833323</p>
+
+	<p>3) Так же запрещается размещать конфиденциальную информацию клуба.</p>
+
+	<p>4) Все негативные эмоции размещаем в книге жалоб https://vk.com/topic-54995159_29971180 .</p>
+
+	<p>За нарушения правил, дается первое предупреждение, затем заносим в ЧЕРНЫЙ СПИСОК.</p>
+
+	<p>ПРАВИЛА БЕЗОПАСНОСТИ И ПРОВЕДЕНИЕ ЗАЕЗДОВ:</p>
+
+	<p>1. Убедительная просьба к зрителям и участникам, не паркуйте свои авто возле старта и на полосе проведения заездов - чтобы не сужать полосу дороги, не задерживать проезд маршруток, гражданских автомобилей и не создавать пробки во избежании очень быстрого приезда ГАИ.</p>
+
+	<p>2. Уважаемые зрители, в целях вашей же безопасности, наблюдайте за заездами, СТРОГО за ограждением, которое будет установлено на время проведения заездов, не выходя на трассу.</p>
+
+	<p>3. Автомобили выставляйте на старт уже готовыми парами, договаривайтесь с соперниками за ранее. Это ускорит процесс гонок.</p>
+
+	<p>4. Мусор весь который хотите оставить на парковке или обочине забирайте с собой и выкидывайте в урну, не превращайтесь в дикарей.</p>
+
+	<p>5. Идеи и пожелания. 
+	Здесь вы можете оставить свои как негативные отзывы так и положительные 
+	https://vk.com/topic-54995159_29971180 книга жалоб!</p>
+	<input type="checkbox" ng-model="agree">Я полностю понимаю риск, и согласен со всеми правилами</input>
+	<button ng-click="main.checkState('state2',agree); main.setState(3);" ng-disabled="!agree">Продолжить</button>
+</div>
+
+<div ng-show="main.isState(3)">
+	<input type="text" placeholder="поиск" ng-model="searchName"/>
+		<select ng-model="groups">
+			<option value="">все</option>
+			<option value="профи">профи</option>
+			<option value="любители">любители</option>
+		</select>
+
+	<div class="carsContainer" ng-repeat="car in main.cars | filter:{$:searchName,group:groups}">
+		
+		<div class="carsDiv" ng-class="{selectedCar:car.id==main.car}">
+			<a href ng-click="main.setCar(car.id)">
+				<div class="carImg">
+					<img ng-src="{{car.img[0]}}">
+				</div>
+				<p class="carInfo">{{car.car}} {{car.driver}}</p>
+				<p class="carInfo">{{car.price}}грн/(3 круга)</p>
+			</a>
+		</div>
+		
+
+	</div>
+	<div class="clear"></div>
+	<button ng-click="main.checkState('state3',main.car); main.setState(4);" ng-disabled="!main.car">Продолжить</button>
+</div>
+
+<div ng-show="main.isState(4)">
+<img ng-src="{{car.img[0]}}">
+	<p>Ваш номер телефона: </p><input type="text" name="phone" />
+	<p>Ваша почта: </p><input type="text" name="mail" />
+	<p>Ваше имя: </p><input type="text" name="name" />
+	<p>Вы выбрали: Волга 24</p>
+	<p>Количество кругов: 3</p>
+	<p>Ориентировачная дата: 01.09.2016</p>
+	<p>Способ оплаты: </p>
+	<select ng-model="pay">
+		<option value="">Выберите</option>
+		<option value="наличка">наличкой</option>
+		<option value="на карту">на карту приватБанка</option>
+	</select>
+	<button ng-click="main.setState(4);">Заказать</button>
+</div>
+
+		</section>
+		<section class="content" ng-show="main.isSet(2);"><h2>Автомобили:</h2>
+<input type="text" placeholder="поиск" ng-model="searchName"/>
+	<select ng-model="groups">
+		<option value="">все</option>
+		<option value="профи">профи</option>
+		<option value="любители">любители</option>
+	</select>
+
+<div class="carsContainer" ng-repeat="car in main.cars | filter:{$:searchName,group:groups}">
+	<div class="carsDiv">
+		<div class="carImg">
+			<img ng-src="{{car.img[0]}}">
+		</div>
+		<p class="carInfo">{{car.car}} {{car.driver}}</p>
+		<p class="carInfo">{{car.price}}грн/(3 круга)</p>
+	</div>
+</div>
+		</section>
+		<section class="content" ng-show="main.isSet(3);"><h2>Фотографии и видео:</h2>
+<a href="https://vk.com/albums-54995159"><img src="img/fotos.jpg" style="width:100%;height:auto" title="фотографии" alt="фотографии"></a>
+		</section>
+		<section class="content" ng-show="main.isSet(4);"><h2>Прайс лист:</h2>
+<div ng-repeat="car in main.cars"><p>{{car.driver}} - {{car.price}}грн</p></div>
+		</section>
+		<section class="content" ng-show="main.isSet(5);"><h2>Наши партнеры:</h2>
+<img src="img/partners/KSRN.png" style="width:100%;height:auto" title="фотографии" alt="KSRN">
+		</section>
+		<section class="content" ng-show="main.isSet(7);"><h2>Наши контакты:</h2>
+<p>Богуш Дмитрий - 093 995 95 96</p>
+<p>Олег J-Ready - 093 574 18 67</p>
+<img src="img/map.png" style="width:100%;height:auto" title="фотографии" alt="фотографии">
+
+		</section>
+		<section class="content" ng-show="main.isSet(8);"><h2>Информация о нас:</h2>
+<p>Дрифт - развлечение для настоящих мужчин, готовых к риску, эмоциям, драйву. Возможность испытать все это на себе обеспечивает дрифтинг – экстремальный спорт, связанный со скоростью и мастерством удержания автомобиля на трассе.</p>
+<p>Первая федерация дрифта появилась не официально в Украине в 2008 году, в это же время провели 
+первый чемпионат в нашей стране. в 2013 при поддержке Федерации Автоспорта Украины (ФАУ) был создан 
+официальный комитет Дрифтинга в Украинской Автомобильной федерации. С каждым годом всё больше людей интересуются этим красочным и зрелищным видом авто-спорта. Мы - автоклуб Kharkov Street Racing Night проводим дрифт-тренировки, куда вы можете приехать просто посмотреть или выехать показать свои умения. Мы всегда рады видеть всех, от новичков до проф. пилотов.</p>
+<p>Атмосфера нашего мероприятия обязана наполнить ваше лицо улыбкой, пощекотать нервы и точно понравится вашим детишкам, ну а сели вы тоже увлекаетесь этим видом спорта или с детства мечтали о таком увлечение - подарите себе возможность пообщаться и обменяться опытом с такими же как Вы</p>
+<p>И теперь мы даем Вам возможность почуствовать себя в роле штурама на том автомобиле, который Вам больше нравится.</p>
+
+<p>Купить сетификат можно<a href style="color:red; font-weight: bold;" ng-click="main.setTab(1);">здесь</a></p>
+		</section>
+	</main>
+
+<footer class="footer">
+	<nav class="bottomMenu">
+		<ul>
+			<li ng-class="{ active:main.isSet(5) }">
+				<a href ng-click="main.setTab(5);">Партнеры</a></li>
+			<li ng-class="{ active:main.isSet(6) }">
+				<a href ng-click="main.setTab(6);">Соглашение</a></li>
+			<li ng-class="{ active:main.isSet(7) }">
+				<a href ng-click="main.setTab(7);">Контакты</a></li>
+			<li ng-class="{ active:main.isSet(8) }">
+				<a href ng-click="main.setTab(8);">О нас</a></li>
+		</ul>
+	</nav>
+</footer>
+
+</body>
+</html>

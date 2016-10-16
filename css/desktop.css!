@@ -1,0 +1,240 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+
+.mobileVersion{
+	display: none;
+}
+
+.header{
+	position: fixed;
+	top: 0;
+	width: 100vw;
+	height: 50px;
+	border-bottom: 3px solid black;
+	background: rgb(250,231,50);
+	z-index: 100;
+}
+
+h1{
+	margin-left: 50px;
+	line-height: 50px;
+	float: left;
+	width: 15%;
+}
+@media (max-width: 900px) {
+    h1 {
+        font-size: 18px;
+        width: 12%;
+        margin-left: 30px;
+    }
+}
+
+.mainMenu{
+	float: right;
+	margin-right: 50px;
+	width: 70%;
+}
+
+.mainMenu ul{
+	white-space: nowrap;
+	text-align: right;
+	font-family: Arial;
+	font-weight: bold;
+}
+
+.mainMenu li, .bottomMenu li{
+	display: inline-block;
+	list-style-type: none;
+	margin-left: 4%;
+	cursor: pointer;
+	margin-top: 5px;
+	height: 40px;
+	border-radius: 10px 20px;
+}
+
+.mainMenu li:hover, .bottomMenu li:hover{
+	background: rgb(200,255,100);
+}
+
+a{
+	height: 50px;
+	padding: 15px 15px;
+	line-height: 40px;
+	text-decoration: none;
+	color: black;
+}
+
+a:hover{
+	color: rgb(255,55,0);
+}
+
+.active{
+	background: rgb(155,255,0);
+}
+
+.active a:hover{
+	color: black;
+}
+
+.container{
+	background: url("../img/background.png") 50% 50% no-repeat, rgb(255,255,230);
+	background-size: auto 120%;
+	width: 100vw;
+	min-height: 100%;
+	position: fixed;
+	z-index: 10;
+}
+
+.mainDiv{
+	width: 100%; 
+	min-width: 200px;
+	min-height: 100vh;
+	box-sizing: border-box;
+	padding: 53px 0px;
+	margin: 0 auto;
+	z-index: 90;
+	position: absolute;
+
+	background: rgba(255,255,255,0.9);
+background: -moz-linear-gradient(left, rgba(255,255,0,0) 0%, rgba(255,255,255,0.9) 10%, rgba(255,255,255,0.9) 93%, rgba(255,255,0,0) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,255,0,0)), color-stop(10%, rgba(255,255,255,0.9)), color-stop(93%, rgba(255,255,255,1)), color-stop(100%, rgba(255,255,0,0)));
+background: -webkit-linear-gradient(left, rgba(255,255,0,0) 0%, rgba(255,255,255,0.9) 10%, rgba(255,255,255,0.9) 93%, rgba(255,255,0,0) 100%);
+background: -o-linear-gradient(left, rgba(255,255,0,0) 0%, rgba(255,255,255,0.9) 10%, rgba(255,255,255,0.9) 93%, rgba(255,255,0,0) 100%);
+background: -ms-linear-gradient(left, rgba(255,255,0,0) 0%, rgba(255,255,255,0.9) 10%, rgba(255,255,255,0.9) 93%, rgba(255,255,0,0) 100%);
+background: linear-gradient(to right, rgba(255,255,0,0) 0%, rgba(255,255,255,0.9) 10%, rgba(255,255,255,0.9) 93%, rgba(255,255,0,0) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff', GradientType=1 );
+}
+
+.content{
+	width: 70%;
+	min-height: 100%;
+	margin: 30px auto;
+}
+
+.content div{
+	width: 100%;
+}
+
+h2{
+	margin-bottom: 15px;
+}
+
+.content p{
+	line-height: 2;
+	font-size: 20px;
+}
+
+.statesOrder{
+	width: 100%;
+	margin-bottom: 20px;
+	text-align-last: justify;
+	text-align: justify;
+}
+
+.statesOrder li{
+	display: inline-block;
+	text-align: center;
+	text-align-last: center;
+	width: 20%;
+	border: 1px solid black;
+	padding: 5px;
+	cursor: pointer;
+}
+
+.statesOrder li:hover{
+	background: rgb(200,255,100);
+	color: red;
+}
+
+.stateGood{
+	background: green;
+}
+
+.stateActive{
+	background: yellow;
+}
+
+.carsContainer{
+	width: 100%;
+	margin: 0 auto;
+}
+
+.carsDiv{
+	display: inline-block;
+	float: left;
+	margin: 0 3%;
+	width: 380px;
+	height: 500px;
+	margin-top: 20px;
+	box-sizing: border-box;
+}
+
+.selectedCar{
+	background: rgb(200,255,100);
+	border: 3px solid black;
+	border-radius: 10px;
+}
+
+.carImg{
+	border-radius: 100px;
+	overflow: hidden;
+	width: 350px;
+	height: 350px;
+	margin: 0 auto;
+}
+
+.carImg img{
+	width: 100%;
+	height: 100%;
+}
+
+.carInfo{
+	text-align: center;
+}
+
+button{
+	display: block;
+	margin:0 auto;
+	margin-top: 20px;
+	background: white;
+	padding: 5px 20px;
+	border: 2px solid black;
+	cursor: pointer;
+}
+
+button:hover{
+	background: rgb(200,255,100);
+}
+
+button:active{
+	background: red;
+}
+
+.clear{
+	clear: both;
+}
+
+.footer{
+	position: fixed;
+	bottom: 0;
+	width: 100vw;
+	height: 50px;
+	border-top: 3px solid black;
+	background: rgb(250,231,50);
+	z-index: 99;
+}
+
+.bottomMenu{
+	float: left;
+	width: 70%;
+}
+
+.bottomMenu ul{
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-weight: bold;
+}
+
